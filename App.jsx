@@ -1,12 +1,12 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import LeaderScreen from "../../screens/LeaderScreen";
+import LeadersScreen from "./screens/LeadersScreen";
 
 export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <LeaderScreen />
+      <LeadersScreen />
     </>
   );
 }
