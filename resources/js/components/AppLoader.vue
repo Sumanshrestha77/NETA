@@ -1,7 +1,7 @@
 <template>
     <div
         class="loader-container bg-slate-900 fixed inset-0 flex items-center justify-center z-50"
-        :class="{ 'opacity-0 pointer-events-none': !isLoading }"
+        :class="{ 'fade-out': !isLoading }"
     >
         <div class="loader-content text-center">
             <div class="logo-container relative">
@@ -32,43 +32,32 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
 export default {
     name: "AppLoader",
+    emits: ["loaded"],
     props: {
         duration: {
             type: Number,
             default: 3500,
         },
     },
-    data() {
-        return {
-            isLoading: true,
-        };
-    },
-    mounted() {
-        this.animateLoader();
+    setup(props, { emit }) {
+        const isLoading = ref(true);
+        const letterN = ref(null);
+        const letterE = ref(null);
+        const letterT = ref(null);
+        const letterA = ref(null);
 
-        // Hide loader after duration
-        setTimeout(() => {
-            this.isLoading = false;
-            this.$emit("loaded");
-        }, this.duration);
-    },
-    methods: {
-        animateLoader() {
+        const animateLoader = () => {
             // Create a timeline for the animation
             const tl = gsap.timeline();
 
             // Animate the letters
             tl.from(
-                [
-                    this.$refs.letterN,
-                    this.$refs.letterE,
-                    this.$refs.letterT,
-                    this.$refs.letterA,
-                ],
+                [letterN.value, letterE.value, letterT.value, letterA.value],
                 {
                     y: -100,
                     opacity: 0,
@@ -97,7 +86,28 @@ export default {
                 yoyo: true,
                 stagger: 0.5,
             });
-        },
+        };
+
+        onMounted(() => {
+            animateLoader();
+
+            // Single timeout to handle loading completion
+            setTimeout(() => {
+                isLoading.value = false;
+                // Wait for fade-out animation to complete before emitting
+                setTimeout(() => {
+                    emit("loaded");
+                }, 600); // Match the CSS transition duration
+            }, props.duration);
+        });
+
+        return {
+            isLoading,
+            letterN,
+            letterE,
+            letterT,
+            letterA,
+        };
     },
 };
 </script>
@@ -105,6 +115,11 @@ export default {
 <style scoped>
 .loader-container {
     transition: opacity 0.6s ease-out;
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .circle-0 {
