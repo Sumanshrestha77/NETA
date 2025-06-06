@@ -1,25 +1,26 @@
 {
+    "name": "laravel-vue-app",
+    "version": "1.0.0",
     "private": true,
     "type": "module",
     "scripts": {
+        "dev": "vite",
         "build": "vite build",
-        "dev": "vite"
+        "preview": "vite preview"
     },
     "devDependencies": {
-        "@tailwindcss/postcss": "^4.1.7",
-        "@tailwindcss/vite": "^4.0.0",
-        "@vitejs/plugin-vue": "^5.2.4",
-        "autoprefixer": "^10.4.21",
-        "axios": "^1.8.2",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^1.2.0",
-        "postcss": "^8.5.3",
-        "tailwindcss": "^4.1.7",
-        "vite": "^6.2.4"
+        "@vitejs/plugin-vue": "^4.4.0",
+        "autoprefixer": "^10.4.16",
+        "axios": "^1.6.1",
+        "laravel-vite-plugin": "^0.8.0",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.3.5",
+        "vite": "^4.5.0",
+        "vue": "^3.3.8"
     },
     "dependencies": {
-        "gsap": "^3.13.0",
-        "vue": "^3.5.14",
-        "vue-router": "^4.5.1"
+        "@headlessui/vue": "^1.7.16",
+        "@heroicons/vue": "^2.0.18",
+        "gsap": "^3.13.0"
     }
 }

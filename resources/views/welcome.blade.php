@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Laravel Vue App</title>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased">
-    <div class="min-h-screen flex items-center justify-center">
-        @auth
-        <div>Welcome, {{ Auth::user()->name }}! <a href="{{ route('dashboard') }}">Dashboard</a></div>
-        @else
-        <div>
-            <a href="{{ route('login') }}" class="text-blue-500">Login</a> |
-            <a href="{{ route('register') }}" class="text-blue-500">Register</a>
-        </div>
-        @endauth
-    </div>
+<body>
+    <div id="app"></div>
 </body>
 
 </html>

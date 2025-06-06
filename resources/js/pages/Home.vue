@@ -493,6 +493,9 @@ export default {
         const itemsPerPage = ref(12);
         const searchSection = ref(null);
         const user = ref(null);
+        const getImagePath = (imageName) => {
+            return `/images/leaders/${imageName}`;
+        };
 
         // Mock data for leaders (in a real app, this would come from an API)
         const allLeaders = ref([
@@ -504,7 +507,7 @@ export default {
                 province: "Sudurpashchim",
                 age: 77,
                 gender: "Male",
-                image: "/images/leaders/deuba.jpg",
+                image: getImagePath("deuba.jpg"),
                 bio: "Sher Bahadur Deuba is a Nepalese politician who served as Prime Minister of Nepal five times.",
             },
             {
@@ -515,18 +518,18 @@ export default {
                 province: "Koshi",
                 age: 71,
                 gender: "Male",
-                image: "/images/leaders/oli.jpg",
+                image: getImagePath("oli.jpg"),
                 bio: "K. P. Sharma Oli is a Nepalese politician who served as Prime Minister of Nepal.",
             },
             {
                 id: 3,
-                name: "Pushpa Kamal Dahal (Prachanda)",
+                name: "Pushpa Kamal Dahal",
                 position: "Prime Minister",
                 party: "Communist Party of Nepal (Maoist Centre)",
                 province: "Bagmati",
                 age: 68,
                 gender: "Male",
-                image: "/images/leaders/prachanda.jpg",
+                image: getImagePath("prachanda.jpg"),
                 bio: "Pushpa Kamal Dahal, better known by his nom de guerre Prachanda, is a Nepalese politician and current Prime Minister of Nepal.",
             },
             // More leaders would be added here
