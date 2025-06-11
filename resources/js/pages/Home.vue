@@ -42,6 +42,7 @@
                         </defs>
                     </svg>
                 </div>
+
                 <div
                     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10"
                 >
@@ -54,6 +55,7 @@
                                 >Political Leaders</span
                             >
                         </h1>
+
                         <p class="max-w-xl mx-auto text-xl text-gray-300 mb-8">
                             Explore Nepal's political landscape through our
                             comprehensive database of prominent leaders across
@@ -109,6 +111,24 @@
                         >
                             Find Political Leaders
                         </h2>
+                        <router-link
+                            to="/register"
+                            class="btn btn-primary float-right"
+                            style="
+                                position: relative;
+                                z-index: 1000;
+                                background-color: green;
+                                padding: 10px 14px;
+                                color: white;
+                                font-weight: 500;
+                                border-radius: 7px;
+                                margin: 10px 10px;
+                            "
+                            @click="handleClick"
+                        >
+                            Register
+                        </router-link>
+
                         <p
                             class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4"
                         >
@@ -653,6 +673,9 @@ export default {
         const featuredLeaders = computed(() => {
             return allLeaders.value.slice(0, 3);
         });
+        const handleClick = () => {
+            console.log("register clicked");
+        };
 
         // Pagination
         const totalPages = computed(() => {
